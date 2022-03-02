@@ -12,7 +12,7 @@ const credentials = {
   auth_uri: "https://accounts.google.com/o/oauth2/auth",
   token_uri: "https://oauth2.googleapis.com/token",
   auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
-  redirect_uris: ["https://jkraemr.github.io/meet-app/", "http://localhost:3000/test-auth-server.html"],
+  redirect_uris: ["https://jkraemr.github.io/meet-app/"],
   javascript_origins: ["https://jkraemr.github.io/", "http://localhost:3000"],
 };
 
@@ -96,13 +96,12 @@ module.exports.getCalendarEvents = async (event) => {
         timeMin: new Date().toISOString(),
         singleEvents: true,
         orderBy: "startTime",
-        maxResults: 32,
       },
       (error, response) => {
         if (error) {
-          return reject(error);
+          reject(error);
         } else {
-          return resolve(response);
+          resolve(response);
         }
       }
     );
@@ -111,9 +110,7 @@ module.exports.getCalendarEvents = async (event) => {
       return {
         statusCode: 200,
         headers: {
-          "Access-Control-Allow-Headers": "*",
           "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Credentials": true,
         },
         body: JSON.stringify({ events: results.data.items }),
       };
@@ -122,6 +119,9 @@ module.exports.getCalendarEvents = async (event) => {
       console.error(err);
       return {
         statusCode: 500,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
         body: JSON.stringify(err),
       };
     });
