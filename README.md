@@ -19,7 +19,27 @@ upcoming events.
 
 **User story:** As a user, I should be able to filter events by city so that I can see a list of events that take place in that city.
 
-### Feature 2: Show/Hide an event's details
+**Scenario 1:**
+When user has not searched for a city, show upcoming events from all cities
+* **Given** user has not searched for a city
+* **When** user opens the app
+* **Then** user should see a list of upcoming events from around the world
+
+**Scenario 2:**
+User should see a list of suggestions when they search for a city
+* **Given** the main page is open
+* **When** user starts typing in the city textbox
+* **Then** user should receive a list of cities (suggestions) that match what they have typed
+
+**Scenario 3:**
+User can select a city from the suggested list
+* **Given** user was typing “Berlin” in the city textbox
+* **And** the list of suggested cities is showing
+* **When** user selects a city (e.g., “Berlin, Germany”) from the list
+* **Then** their city should be changed to that city (i.e., “Berlin, Germany”)
+* **And** user should receive a list of upcoming events in that city
+
+### Feature 2: Show or hide event details
 
 **User story:** As a user, I should be able to show / hide event details so that I can get more information about a specific event or return to the overview list.
 
@@ -32,12 +52,12 @@ An event element is collapsed by default
 **Scenario 2:**
 User can expand an event to see its details
 * **Given** the event list was loaded and shows at least a selection of collapsed event items 
-* **When** user clicks on single event item to get more information 
+* **When** user clicks on single event item to get more information
 * **Then** the event detail view shall be expanded
 
 **Scenario 3:** 
 User can collapse an event to hide its details
-* **Given** an event event detail view was loaded
+* **Given** an event detail view was loaded
 * **When** user gives the command to hide the currently shown event detail view
 * **Then** the event detail view shall be closed
 
@@ -47,10 +67,10 @@ User can collapse an event to hide its details
 so that I can choose the amount of events shown in the overview list at once.
 
 **Scenario 1:**
-When user hasn’t specified a number, 32 is the default number
+When user has not specified a number, 32 is the default number
 
 * **Given** the event list was loaded
-* **When** user does not interact with 'amount of events' selection feature/function
+* **When** user does not interact with -amount of events- selection feature/function
 * **Then** 32 events shall be listed per default
 
 **Scenario 2:**
