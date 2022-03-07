@@ -2,15 +2,11 @@ import { mockData } from './mock-data';
 import axios from 'axios';
 import NProgress from 'nprogress';
 
-
-
 export const extractLocations = (events) => {
   var extractLocations = events.map((event) => event.location);
   var locations = [...new Set(extractLocations)];
   return locations;
 };
-
-
 
 export const checkToken = async (accessToken) => {
   const result = await fetch(
@@ -21,8 +17,6 @@ export const checkToken = async (accessToken) => {
 
   return result;
 };
-
-
 
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
@@ -39,8 +33,6 @@ const getToken = async (code) => {
   return access_token;
 };
 
-
-
 const removeQuery = () => {
   if (window.history.pushState && window.location.pathname) {
     var newurl =
@@ -55,8 +47,6 @@ const removeQuery = () => {
   }
 };
 
-
-
 export const getEvents = async () => {
   NProgress.start();
 
@@ -66,23 +56,19 @@ export const getEvents = async () => {
   }
 
   const token = await getAccessToken();
+
   if (token) {
     removeQuery();
     const url = 'https://vd4a1ccap1.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/' + token;
     const result = await axios.get(url);
-    if (result.data) {
-      var locations = extractLocations(result.data.events);
-      localStorage.setItem('lastEvents', JSON.stringify(result.data));
-      localStorage.setItem('locations', JSON.stringify(locations));
-    }
+
     NProgress.done();
     return result.data.events;
   }
 };
 
-
-
 export const getAccessToken = async () => {
+
   const accessToken = localStorage.getItem('access_token');
   const tokenCheck = accessToken && (await checkToken(accessToken));
 
