@@ -3,7 +3,7 @@ import './App.css';
 import './nprogress.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
-import { getEvents, extractLocations, checkToken } from './api';
+import { getEvents, extractLocations } from './api';
 import { NumberOfEvents } from './NumberOfEvents';
 import { WarningAlert } from './Alert';
 
@@ -24,21 +24,6 @@ export class App extends Component {
         this.setState({ events, locations: extractLocations(events) })
       }
     });
-    // // online:
-    // const accessToken = localStorage.getItem('access_token');
-    // const isTokenValid = (await checkToken(accessToken)).error ? false : true;
-    // const searchParams = new URLSearchParams(window.location.search);
-    // const code = searchParams.get('code');
-    // if (code || (isTokenValid && this.mounted)) {
-    //   getEvents().then((events) => {
-    //     if (this.mounted) {
-    //       this.setState({
-    //         events: events.slice(0, this.state.numberOfEvents),
-    //         locations: extractLocations(events)
-    //       });
-    //     }
-    //   });
-    // }
   }
 
   componentWillUnmount() {
