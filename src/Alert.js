@@ -35,7 +35,6 @@ class InfoAlert extends Alert {
       textDecorationStyle: 'dotted',
     };
   }
-
 }
 
 class ErrorAlert extends Alert {
@@ -51,7 +50,21 @@ class ErrorAlert extends Alert {
       textDecorationStyle: 'dashed',
     };
   }
-
 }
 
-export { InfoAlert, ErrorAlert };
+class WarningAlert extends Alert {
+  constructor(props) {
+    super(props);
+    this.color = 'orange';
+  }
+
+  getStyle = () => {
+    return {
+      color: this.color,
+      textDecorationLine: 'underline',
+      textDecorationStyle: 'double',
+    };
+  }
+}
+
+export { InfoAlert, ErrorAlert, WarningAlert };

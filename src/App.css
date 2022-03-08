@@ -130,7 +130,7 @@ input[type="number"] {
 }
 
 .Alert {
-  position: fixed;
+  /* position: fixed; */
   left: 5%;
 }
 

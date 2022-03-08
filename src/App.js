@@ -5,6 +5,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import { getEvents, extractLocations, checkToken } from './api';
 import { NumberOfEvents } from './NumberOfEvents';
+import { WarningAlert } from './Alert';
 
 export class App extends Component {
 
@@ -78,6 +79,7 @@ export class App extends Component {
   render() {
     return (
       <div className='App'>
+        {!navigator.onLine ? (<WarningAlert style={{ textAlign: 'center' }} text='++ Offline Mode (only chached data are being shown) ++' />) : (<WarningAlert text='' />)}
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <NumberOfEvents
           numberOfEvents={this.state.numberOfEvents}
