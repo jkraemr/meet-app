@@ -1,6 +1,6 @@
 # Meet App
 
-The **Meet App** is a serverless, progressive web application (PWA) built with React using TDD and BDD approaches. The application uses the Google Calendar API to fetch upcoming events for web developers.
+The **meetFS App** is a serverless, progressive web application (PWA) built with React using test-driven (TDD) and behaviour-driven (BDD) development methods. The application uses the Google Calendar API to fetch upcoming events for full-stack web developers.
 
 ## Key Features
 
