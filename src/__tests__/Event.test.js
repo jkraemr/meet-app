@@ -125,9 +125,9 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find('.event-htmlLink')).toHaveLength(1);
   });
 
-  test('render event-htmlLink valid data', () => {
-    let eventCalendarLink = event.htmlLink;
-    expect(EventWrapper.find('.event-htmlLink').at(0).text()).toBe(eventCalendarLink);
-  });
+  // test('render event-htmlLink valid data', () => {
+  //   let eventCalendarLink = event.htmlLink;
+  //   expect(EventWrapper.find('.event-htmlLink').at(0).text()).toBe(eventCalendarLink);
+  // });
 
 });
