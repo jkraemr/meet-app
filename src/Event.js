@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import { Button, Card, CardGroup } from 'react-bootstrap';
 
 class Event extends Component {
   constructor(props) {
@@ -24,36 +23,39 @@ class Event extends Component {
 
     return (
       <div className='event'>
-        <Card>
-          <Card.Body>
-            <Card.Title className='event-summary'>
-              {event.summary}
-            </Card.Title>
-            <Card.Text className='event-start-dateTime'>
-              {event.start.dateTime}
-            </Card.Text>
-            <Card.Text className='event-start-timeZone'>
-              {event.start.timeZone}
-            </Card.Text>
-            <Card.Text className='event-location'>{event.location}</Card.Text>
+        <CardGroup>
+          <Card bg='dark' border='white' text='white'>
+            <Card.Body>
+              <Card.Title className='event-summary'>
+                {event.summary}
+              </Card.Title>
+              <Card.Text className='event-start-dateTime'>
+                {event.start.dateTime}
+              </Card.Text>
+              <Card.Text className='event-start-timeZone'>
+                {event.start.timeZone}
+              </Card.Text>
+              <Card.Text className='event-location'>{event.location}</Card.Text>
 
-            {!this.state.collapsed && (
-              <div className='event-details'>
-                <Card.Text className='event-description'>{event.description}</Card.Text>
-                <Card.Link className='event-htmlLink' href={event.htmlLink}>
-                  {event.htmlLink}
-                </Card.Link>
-              </div>
-            )}
-
-            <Button
-              className='event-details-button'
-              onClick={() => this.handleItemClicked()}
-            >
-              {this.state.collapseButton}{' '}
-            </Button>
-          </Card.Body>
-        </Card>
+              {!this.state.collapsed && (
+                <div className='event-details'>
+                  <Card.Text className='event-description'>{event.description}</Card.Text>
+                  <br></br>
+                  {/* <Card.Link className='event-htmlLink' href={event.htmlLink} target='_blank'>
+                    {event.htmlLink}
+                  </Card.Link> */}
+                  <Card.Link className='event-htmlLink' href={event.htmlLink} target='_blank'>&#128197; View in GCal</Card.Link>
+                </div>
+              )}
+              <Button
+                className='event-details-button' variant='light'
+                onClick={() => this.handleItemClicked()}
+              >
+                {this.state.collapseButton}{' '}
+              </Button>
+            </Card.Body>
+          </Card>
+        </CardGroup>
       </div>
     );
   }

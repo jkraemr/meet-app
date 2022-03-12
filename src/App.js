@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import './App.css';
-import './nprogress.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
+import WelcomeScreen from './WelcomeScreen';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import { EventGenre } from './EventGenre';
 import { NumberOfEvents } from './NumberOfEvents';
 import { WarningAlert } from './Alert';
-import WelcomeScreen from './WelcomeScreen';
 import {
   ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
-
+import { Navbar, Container, Row, Col } from 'react-bootstrap';
+import './App.css';
+import './nprogress.css';
 
 export class App extends Component {
 
@@ -102,6 +102,13 @@ export class App extends Component {
   };
 
   render() {
+
+    const logo = require('./logo_transparent.webp');
+
+    const refreshPage = () => {
+      window.location.reload();
+    }
+
     if (this.state.showWelcomeScreen === undefined &&
       navigator.onLine && !window.location.href.startsWith('http://localhost')
     ) {
@@ -116,36 +123,65 @@ export class App extends Component {
           }}
         />
       );
+
     return (
       <div className='App'>
-        {!navigator.onLine ? (<WarningAlert style={{ textAlign: 'center' }} text='++ Offline Mode (only cached data are being shown) ++' />) : (<WarningAlert text='' />)}
-        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-        <NumberOfEvents
-          numberOfEvents={this.state.numberOfEvents}
-          updateNumberOfEvents={this.updateNumberOfEvents}
-          errorAlert={this.state.errorAlert} />
-
-        <div className='data-vis-wrapper'>
-          <EventGenre events={this.state.events} />
-          <ResponsiveContainer height={400}>
-            <ScatterChart
-              // width={800}
-              // height={400}
-              margin={{
-                top: 20, right: 20, bottom: 20, left: 20,
-              }}
-            >
-              <CartesianGrid />
-              <XAxis type="category" dataKey="city" name="City" />
-              <YAxis type="number" dataKey="number" name="Number of Events" />
-              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-              <Scatter data={this.getData()} fill="#8884d8" />
-            </ScatterChart>
-          </ResponsiveContainer>
+        <Navbar sticky='top' bg='dark' variant='dark' expand='md'>
+          <Container fluid>
+            <Navbar.Brand onClick={refreshPage} style={{ cursor: 'pointer' }}>
+              <img
+                alt=''
+                src={logo}
+                width='30'
+                height='30'
+                className='d-inline-block align-top'
+              />{' '}
+              meetFS
+            </Navbar.Brand>
+            <Navbar.Toggle />
+            <Navbar.Collapse className='justify-content-end'>
+              <Navbar.Text>
+                Worldwide Events for Full-Stack Web Developers. Made with
+                &#9825; by <a href='https://github.com/jkraemr/meet-app' target='_blank'>jkraemr</a>
+              </Navbar.Text>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+        <div className='body'>
+          {!navigator.onLine ? (<WarningAlert style={{ textAlign: 'center' }} text='++ Offline Mode (only cached data are being shown) ++' />) : (<WarningAlert text='' />)}
+          <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
+          <NumberOfEvents
+            numberOfEvents={this.state.numberOfEvents}
+            updateNumberOfEvents={this.updateNumberOfEvents}
+            errorAlert={this.state.errorAlert} />
+          <div className='data-vis-wrapper'>
+            <EventGenre events={this.state.events} />
+            <ResponsiveContainer height={400}>
+              <ScatterChart
+                margin={{
+                  top: 20, right: 20, bottom: 20, left: 20,
+                }}
+                strokeWidth={1}
+              >
+                <CartesianGrid stroke='#F8DB5C' />
+                <XAxis strokeWidth={1.5} stroke='#F8DB5C' type='category' dataKey='city' name='City' />
+                <YAxis strokeWidth={1.5} stroke='#F8DB5C' type='number' dataKey='number' name='Number of Events' />
+                <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+                <Scatter data={this.getData()} fill='#FF9670' />
+              </ScatterChart>
+            </ResponsiveContainer>
+          </div>
+          <br></br>
+          <Container fluid>
+            <Row>
+              <Col xs={12}>
+                <EventList events={this.state.events} />
+              </Col>
+            </Row>
+          </Container>
+          <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
+            getAccessToken={() => { getAccessToken() }} />
         </div>
-        <EventList events={this.state.events} />
-        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
-          getAccessToken={() => { getAccessToken() }} />
       </div>
     );
   }

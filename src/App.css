@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 .App {
+  background-color: rgb(27, 27, 27);
   text-align: center;
-  padding: 2% 5%;
 }
 
 .App * {
@@ -34,7 +34,18 @@ input[type="number"] {
   line-height: 20px;
   align-self: center;
   height: 38px;
-  margin: 1em
+  margin: 1em;
+}
+
+.citysearch-label {
+  margin: 1em 0 0;
+  color: #fff;
+}
+
+.numbersearch-label {
+  margin: 1em 0 0;
+  color: #fff;
+  
 }
 
 .city {
@@ -56,7 +67,7 @@ input[type="number"] {
   z-index: 2;
   align-self: center;
   margin: 0;
-  top: 43px;
+  top: 11em;
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
 }
@@ -81,8 +92,8 @@ input[type="number"] {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
   text-align: left;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 4px; */
   position: relative;
 }
 
@@ -130,7 +141,7 @@ input[type="number"] {
 }
 
 .Alert {
-  /* position: fixed; */
+  /* position: absolute; */
   left: 5%;
 }
 
@@ -139,12 +150,14 @@ input[type="number"] {
   align-items: center;
   flex-direction: column;
 }
+
 .data-vis-wrapper .recharts-responsive-container {
   min-width: 100%;
   display: flex;
 }
 .recharts-surface {
   overflow: visible;
+  /* margin-left: 9em; */
 }
 
 .login-button {
@@ -212,3 +225,73 @@ input[type="number"] {
     margin: 0 auto;
   }
 }
+
+.body {
+  margin: 2em;
+}
+
+.navbar {
+  border-bottom: 0.5em solid #1b1b1b !important;
+}
+
+.navbar-dark .navbar-brand {
+  color: #F8DB5C;
+  font-weight: 500;
+}
+
+.navbar-dark .navbar-brand:hover {
+  color: #F8DB5C;
+}
+.navbar-text {
+  color: #F8DB5C !important;
+}
+
+.navbar-text a {
+  color: #F8DB5C !important;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.card-group>.card:only-child {
+  border-color: #F8DB5C !important;
+}
+
+.card-title {
+  color: #F8DB5C !important;
+}
+
+button {
+  margin: 1.2em 0 0;
+}
+
+.event-start-timeZone {
+  display: none;
+}
+
+.card-text {
+  font-size: 0.95em;
+  margin: 1em 0 0;
+  color: #F8DB5C;
+}
+
+.bg-dark {
+  background-color: #237191 !important;
+}
+
+.event-htmlLink {
+color: #F8DB5C;
+font-weight: 500;
+text-decoration: underline;
+}
+
+.event-htmlLink:hover {
+  color: #fff;
+  text-decoration: underline;
+  }
+
+.welcome-card {
+  display: flex;
+  align-items: center;
+  height: 35em;
+  justify-content: center;
+  }
