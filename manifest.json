@@ -9,13 +9,13 @@
       "purpose": "any maskable"
     },
     {
-      "src": "meet-app-192-copy.png",
+      "src": "meet-app-192.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any maskable"
     },
     {
-      "src": "meet-app-512-copy.png",
+      "src": "meet-app-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
@@ -23,6 +23,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#1b1b1b",
-  "background_color": "#F8DB5C"
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
 }
