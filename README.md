@@ -111,3 +111,7 @@ Show a chart with the number of upcoming events in each city
 * **Given** the event list was loaded
 * **When** user wants to get a better idea of the amount of events being listed per geo location
 * **Then** user will be provided with a chart view indicating the number of upcoming events by city
+
+## Acknowledgements
+
+This project was built as part of the mentored CareerFoundry Full-Stack Web Development Program / Achievement 4/6 / Testing in the Development Process: https://careerfoundry.com/en/courses/become-a-web-developer/
